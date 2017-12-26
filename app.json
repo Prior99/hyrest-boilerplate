@@ -1,0 +1,18 @@
+{
+    "name": "hyrest-boilerplate",
+    "displayName": "Boilerplate",
+    "expo": {
+        "entryPoint": "./App.js",
+        "sdkVersion": "24.0.0",
+        "packagerOpts": {
+            "sourceExts": ["ts", "tsx"],
+            "transformer": "node_modules/react-native-typescript-transformer/index.js"
+        },
+        "version": "1.0.0",
+        "slug": "boilerplate",
+        "android": {
+            "package": "de.92k.hyrest.boilerplate"
+        },
+        "icon": "./icon.png"
+    }
+}

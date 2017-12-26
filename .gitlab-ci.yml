@@ -1,0 +1,45 @@
+stages:
+  - test
+  - deploy
+
+build:
+  image: "node:8"
+  script:
+    - make release
+  stage: test
+  artifacts:
+    paths:
+      - dist/
+      - locales/
+      - index.html
+      - server/
+
+test:
+  image: "node:8"
+  script:
+    - make test
+  stage: test
+
+lint:
+  image: "node:8"
+  script:
+    - make lint
+  stage: test
+
+deploy:
+  image: "base/archlinux:latest"
+  before_script:
+    - pacman -Sy --noconfirm ansible git openssh python3 rsync
+    - mkdir ~/.ssh
+    - echo "$SSH_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - cd deploy
+    - ansible-playbook -vvv go3.yml
+  dependencies:
+    - build
+  stage: deploy
+  when: manual
+  only:
+    - master

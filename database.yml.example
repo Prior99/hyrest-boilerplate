@@ -1,0 +1,4 @@
+database: boilerplate
+dialect: postgres
+username: user
+password: ""
