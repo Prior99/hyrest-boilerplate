@@ -1,14 +1,14 @@
 import * as React from "react";
 import { View, Text, AppRegistry } from "react-native";
 
-export default class Go3 extends React.Component { // tslint:disable-line
+export default class AndroidApp extends React.Component { // tslint:disable-line
     public render() {
         return (
             <View>
-                <Text>Go3 hello world.</Text>
+                <Text>AndroidApp hello world.</Text>
             </View>
         );
     }
 }
 
-AppRegistry.registerComponent("main", () => Go3);
+AppRegistry.registerComponent("main", () => AndroidApp);
