@@ -41,7 +41,7 @@ run-server: node_modules db
 
 .PHONY: clean-db
 clean-db:
-	dropdb go3 || true
+	dropdb boilerplate || true
 
 .PHONY: clean
 clean:
@@ -51,4 +51,4 @@ clean:
 
 .PHONY: db
 db:
-	createdb go3 || true
+	createdb boilerplate || true

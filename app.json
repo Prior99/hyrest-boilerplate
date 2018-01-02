@@ -12,7 +12,6 @@
         "slug": "boilerplate",
         "android": {
             "package": "de.92k.hyrest.boilerplate"
-        },
-        "icon": "./icon.png"
+        }
     }
 }
