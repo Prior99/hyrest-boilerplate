@@ -4,13 +4,13 @@ services:
     image: postgres:10
     restart: unless-stopped
     environment:
-      POSTGRES_USER: go3
-      POSTGRES_PASSWORD: go3
+      POSTGRES_USER: boilerplate
+      POSTGRES_PASSWORD: boilerplate
     logging:
       driver: "none"
     volumes:
-      - go3_pgdata:/var/lib/postgresql/data
-  go3:
+      - boilerplate_pgdata:/var/lib/postgresql/data
+  boilerplate:
     build: .
     entrypoint:
       - /app/server.sh
@@ -22,12 +22,12 @@ services:
     depends_on:
       - "postgres"
     environment:
-      GO3_DB_DATABASE: go3
-      GO3_DB_USER: go3
-      GO3_DB_PASSWORD: go3
+      GO3_DB_DATABASE: boilerplate
+      GO3_DB_USER: boilerplate
+      GO3_DB_PASSWORD: boilerplate
       GO3_DB_HOST: postgres
       GO3_DB_LOGGING: "false"
       GO3_DB_DRIVER: postgres
 
 volumes:
-  go3_pgdata:
+  boilerplate_pgdata:
