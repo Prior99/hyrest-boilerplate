@@ -1,5 +1,5 @@
 import { observable, computed, action } from "mobx";
-import { bind } from "bind-decorator";
+import { bind, memoize } from "decko";
 import { History } from "history";
 import { component, inject } from "tsdi";
 
@@ -31,7 +31,7 @@ export class UsersStore {
         return Array.from(this.users.values());
     }
 
-    @bind @action
+    @bind @action @memoize
     public async load(id: string) {
         const existing = this.users.get(id);
         if (existing) {
@@ -47,19 +47,5 @@ export class UsersStore {
         const user = this.users.get(id);
         if (!user) { this.load(id); }
         return user;
-    }
-
-    @bind @action
-    public async loadAvatar(id: string) {
-        const avatar = await this.usersController.getUserAvatar(id);
-        this.avatars.set(id, avatar);
-        return avatar;
-    }
-
-    @bind
-    public avatarById(id: string) {
-        const avatar = this.avatars.get(id);
-        if (!avatar) { this.loadAvatar(id); }
-        return avatar;
     }
 }
